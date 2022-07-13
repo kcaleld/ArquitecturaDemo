@@ -1,0 +1,14 @@
+global using Xunit;
+global using ArquitecturaDemo.DTO.Users;
+global using Microsoft.AspNetCore.Mvc;
+global using SistemaILP.Test.LibroIVA.Config;
+global using ArquitecturaDemo.BLL.Config;
+global using AutoMapper;
+global using ArquitecturaDemo.DAL;
+global using ArquitecturaDemo.DAL.Entities;
+global using Microsoft.Data.Sqlite;
+global using Microsoft.EntityFrameworkCore;
+global using ArquitecturaDemo.BLL.v1;
+global using ArquitecturaDemo.BLL.Validators;
+global using ArquitecturaDemo.SVL.Controllers;
+global using FluentValidation.TestHelper;
