@@ -22,7 +22,11 @@
         /// Helpers
         /// </summary>
         public const string
-            StringEmpty = "";
+            StringEmpty = "",
+            EmptyParameter = "0",
+            OrderByAsc = "asc",
+            OrderByDesc = "desc",
+            LambdaParameter = "x";
 
         /// <summary>
         /// Logging responses

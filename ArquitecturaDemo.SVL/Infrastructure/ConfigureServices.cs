@@ -1,8 +1,10 @@
 ﻿using ArquitecturaDemo.BLL.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Options;
+using SistemaILP.SVL.RRHH.Infrastructure.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.IO.Compression;
 using System.Reflection;
@@ -19,6 +21,7 @@ namespace ArquitecturaDemo.SVL.Infrastructure
 
             //Configuración de Versionamiento
             //Se registran las configuraciones para crear el versionamiento de la API con Swagger empezando con la 1
+            services.ConfigureOptions<ConfigureSwaggerOptions>();
             services.AddApiVersioning(options =>
             {
                 options.DefaultApiVersion = new ApiVersion(1, 0);
@@ -32,12 +35,12 @@ namespace ArquitecturaDemo.SVL.Infrastructure
             });
             services.AddSwaggerGen(options =>
             {
-                //Referencia al XML para comentarios de la API
+                options.OperationFilter<SwaggerDefaultValues>();
+
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 options.IncludeXmlComments(xmlPath);
             });
-            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
             //CORS
             //se habilitan los CORS para permitir recibir peticiones a la API

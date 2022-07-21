@@ -10,5 +10,6 @@ namespace ArquitecturaDemo.CBL.v1
 {
     public interface IRolesBL : IGenericRepository<Rol, RolDto>
     {
+        Task AsignarRoles();
     }
 }

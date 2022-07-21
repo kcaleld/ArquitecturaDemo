@@ -10,9 +10,12 @@ namespace ArquitecturaDemo.BLL.Config
         {
             CreateMap<UsuarioDto, Usuario>()
                 .ReverseMap()
-                .ForMember(dest => dest.NombreCompleto, opt => opt.MapFrom(src => $"{src.Nombre} {src.Apellido}"));
+                .ForMember(dest => dest.NombreCompleto, opt => opt.MapFrom(src => $"{src.Nombre} {src.Apellido}"))
+                .ForMember(dest => dest.Nombre, opt => opt.MapFrom(src => ClearNombre(src.Nombre)));
             CreateMap<RolDto, Rol>().ReverseMap();
             CreateMap<UsuarioRolDto, UsuarioRol>().ReverseMap();
         }
+
+        private static string ClearNombre(string text) => text.Trim().Replace("$", "");
     }
 }

@@ -12,5 +12,11 @@ namespace ArquitecturaDemo.BLL.v1
     {
         public RolesBL(UsersContext context, IMapper mapper, IValidator<RolDto> validator, ILogger<GenericRepository<Rol, RolDto>> logger)
             : base(context, mapper, validator, logger) { }
+
+        public async Task AsignarRoles()
+        {
+            var rol = await GetByIdAsync(1);
+            var usuario = await _context.Usuarios.FindAsync(1);
+        }
     }
 }

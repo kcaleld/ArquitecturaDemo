@@ -48,6 +48,8 @@ namespace ArquitecturaDemo.DAL
                     .HasMaxLength(250)
                     .IsUnicode(false);
 
+                entity.Property(e => e.FechaNacimiento).HasColumnType("date");
+
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(50)
                     .IsUnicode(false);
